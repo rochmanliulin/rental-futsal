@@ -1,3 +1,14 @@
+<?php
+// Koneksi database
+include('connection.php');
+
+// Retrieve
+$query = mysqli_query($connect, "SELECT * FROM booking");
+// Mengubah ke array multidimensi
+$results = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -8,6 +19,9 @@
     <title>SkuyFutsaL</title>
 
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
         body {
@@ -17,99 +31,108 @@
         .navbar-brand {
             font-size: 2rem;
             font-weight: bold;
+            color: #007bff;
         }
 
         .navbar {
             height: 80px;
         }
+
+        .navbar-nav .nav-link {
+            color: #007bff;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #0056b3;
+            font-weight: bold;
+        }
+
+        .navbar-brand:hover {
+            color: #0056b3;
+            font-weight: bold;
+        }
     </style>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary shadow" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg bg-light shadow" data-bs-theme="light">
             <div class="container-fluid mx-5">
-                <a class="navbar-brand" href="#">SkuyFutsaL</a>
+                <a class="navbar-brand" href="index.php">SkuyFutsaL</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+                            <a class="nav-link active" aria-current="page" href="index.php">Beranda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Kontak</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Tentang</a>
+                            <a class="nav-link" href="#">Tentang</a>
                         </li>
                     </ul>
-                    <!-- <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form> -->
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="d-flex justify-content-center">
-        <form class="w-50 mt-5" action="insert.php" method="post">
-            <div class="d-flex flex-row justify-content-center column-gap-3">
-                <div class="form-floating mb-3 w-50">
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Pemesan">
-                    <label for="nama" class="form-label">Nama Pemesan</label>
-                </div>
-                <div class="form-floating mb-3 w-50">
-                    <input type="text" class="form-control" id="noTelepon" name="no_telepon" placeholder="No. Telepon">
-                    <label for="noTelepon" class="form-label">No. Telepon</label>
-                </div>
-            </div>
-            <div class="d-flex flex-row justify-content-center column-gap-3">
-                <div class="mb-3 w-50">
-                    <label for="tanggal" class="form-label">Tanggal Pesan</label>
-                    <input type="date" class="form-control" id="tanggal" name="tanggal">
-                </div>
-                <div class="mb-3 w-50">
-                    <label for="waktu" class="form-label">Jam</label>
-                    <input type="time" class="form-control" id="waktu" name="waktu">
-                </div>
-                <div class="mb-3 w-100">
-                    <label for="durasi" class="form-label">Durasi Sewa</label>
-                    <input type="number" class="form-control" id="durasi" name="durasi" placeholder="*hitungan jam">
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="jumlahPemain" class="form-label">Jumlah Pemain</label>
-                <input type="number" class="form-control" id="jumlahPemain" name="jumlah_pemain">
-            </div>
-            <div class="mb-3">
-                <label for="noLapangan" class="form-label">No. Lapangan</label>
-                <input type="number" class="form-control" id="noLapangan" name="no_lapangan">
-            </div>
-            <div class="mb-3">
-                <label for="harga" class="form-label">Harga Bayar</label>
-                <input type="number" class="form-control" id="harga" name="harga">
-            </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="deposito" name="deposito" placeholder="Deposito">
-                <label for="deposito" class="form-label">Deposito</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan">
-                <label for="keterangan" class="form-label">Keterangan <span class="text-secondary">*optional</span></label>
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+
+    <main class="d-flex justify-content-center mt-5">
+        <!-- <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+
+        <div class="table-responsive">
+
+            <h2 class="text-primary fw-medium">Daftar Booking</h2>
+
+            <!-- Fitur Retrieve/Tambah Data -->
+            <a href="add.php"><button type="submit" class="btn btn-primary mt-5" data-bs-toggle="modal" data-bs-target="#tambahDataModal">Tambah Data</button></a>
+
+            <!-- Data -->
+            <table class="table mt-3 table-striped table-hover">
+                <thead class="text-primary shadow-sm">
+                    <tr p-3>
+                        <th scope="col" class="px-4 py-3">No.</th>
+                        <th scope="col" class="px-4 py-3">Nama Pemesan</th>
+                        <th scope="col" class="px-4 py-3">No. Telepon</th>
+                        <th scope="col" class="px-4 py-3">Tanggal Pesan</th>
+                        <th scope="col" class="px-4 py-3">Waktu</th>
+                        <th scope="col" class="px-4 py-3">Durasi Sewa</th>
+                        <th scope="col" class="px-4 py-3">Jumlah Pemain</th>
+                        <th scope="col" class="px-4 py-3">Nomor Lapangan</th>
+                        <th scope="col" class="px-4 py-3">Harga Sewa</th>
+                        <th scope="col" class="px-4 py-3">Deposito</th>
+                        <th scope="col" class="px-4 py-3">Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Menampilkan data dari database yang diubah ke array multidimensi -->
+                    <?php foreach ($results as $key => $value) : ?>
+                        <tr>
+                            <td class="px-4"><?php echo $key + 1; ?></td>
+                            <td class="px-4"><?php echo $value['nama']; ?></td>
+                            <td class="px-4"><?php echo $value['no_telepon']; ?></td>
+                            <td class="px-4"><?php echo $value['tanggal']; ?></td>
+                            <td class="px-4"><?php echo $value['waktu']; ?></td>
+                            <td class="px-4"><?php echo $value['durasi']; ?></td>
+                            <td class="px-4"><?php echo $value['jumlah_pemain']; ?></td>
+                            <td class="px-4"><?php echo $value['no_lapangan']; ?></td>
+                            <td class="px-4"><?php echo $value['harga']; ?></td>
+                            <td class="px-4"><?php echo $value['deposito']; ?></td>
+                            <td class="px-4"><?php echo $value['keterangan']; ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
     </main>
 
+    <!-- JS Bootstrap -->
     <script src="bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
