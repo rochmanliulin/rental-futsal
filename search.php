@@ -2,8 +2,11 @@
 // Koneksi database
 include('connection.php');
 
-// Retrieve
-$query = mysqli_query($connect, "SELECT * FROM booking");
+// Mengambil nilai keyword dari method GET
+$keyword = $_GET['keyword'];
+
+// Searching
+$query = mysqli_query($connect, "SELECT * FROM booking WHERE nama LIKE '%$keyword%' OR no_telepon LIKE '%$keyword%' OR tanggal LIKE '%$keyword%' OR waktu LIKE '%$keyword%' OR durasi LIKE '%$keyword%' OR jumlah_pemain LIKE '%$keyword%' OR no_lapangan LIKE '%$keyword%' OR harga LIKE '%$keyword%' OR deposito LIKE '%$keyword%' OR keterangan LIKE '%$keyword%' ");
 // Mengubah ke array multidimensi
 $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
@@ -68,13 +71,13 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php">Beranda</a>
+                            <a class="nav-link" aria-current="page" href="index.php">Beranda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://wa.me/6282359556972">Kontak</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Tentang Kami</a>
+                            <a class="nav-link" href="#">Tentang Kami</a>
                         </li>
                     </ul>
                 </div>
@@ -100,7 +103,7 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <div class="col-3">
                     <!-- Fitur Search -->
                     <form class="input-group align-items-bottom" role="search" action="search.php" method="get">
-                        <input class="form-control" type="search" name="keyword" placeholder="Cari..." aria-label="Search" >
+                        <input class="form-control" type="search" name="keyword" placeholder="Cari..." aria-label="Search">
                         <button class="btn btn-dark" type="submit">Cari</button>
                     </form>
                 </div>

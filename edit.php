@@ -1,3 +1,16 @@
+<?php
+// Koneksi
+include('connection.php');
+
+// id dari query string
+$id = $_GET['id'];
+
+// Menampilkan data user yang dipilih
+$query = mysqli_query($connect, "SELECT * FROM booking WHERE id='$id' ");
+$result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -74,70 +87,73 @@
 
     <main>
         <div class="d-flex justify-content-center mt-5">
-            <h2 class="text-primary fw-medium">Daftar Pengguna</h2>
+            <h2 class="text-primary fw-medium">Update Data</h2>
         </div>
 
         <div class="d-flex justify-content-center mt-5">
-            <!-- Form Tambah Data -->
-            <form action="insert.php" method="post">
+            <!-- Form Update Data -->
+            <form action="update.php" method="post">
+                <!-- Di hidden untuk mengirim data secara spesifik ke update.php -->
+                <input type="hidden" name="id" value="<?php echo $result[0]['id']; ?>">
+
                 <div class="d-flex flex-row justify-content-center column-gap-3">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Pemesan" required>
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Pemesan" required value="<?php echo $result[0]['nama']; ?>">
                         <label for="nama" class="form-label">Nama Pemesan</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="noTelepon" name="no_telepon" placeholder="No. Telepon" required>
+                        <input type="text" class="form-control" id="noTelepon" name="no_telepon" placeholder="No. Telepon" required value="<?php echo $result[0]['no_telepon']; ?>">
                         <label for="noTelepon" class="form-label">No. Telepon</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row justify-content-center column-gap-3">
                     <div class="mb-3 w-25">
                         <label for="tanggal" class="form-label">Tanggal Pesan</label>
-                        <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" required value="<?php echo $result[0]['tanggal']; ?>">
                     </div>
                     <div class="mb-3 w-25">
                         <label for="waktu" class="form-label">Jam</label>
-                        <input type="time" class="form-control" id="waktu" name="waktu" required>
+                        <input type="time" class="form-control" id="waktu" name="waktu" required value="<?php echo $result[0]['waktu']; ?>">
                     </div>
                     <div class="mb-3 w-50">
                         <label for="durasi" class="form-label">Durasi Sewa</label>
-                        <input type="number" class="form-control" id="durasi" name="durasi" placeholder="*hitungan jam" required>
+                        <input type="number" class="form-control" id="durasi" name="durasi" placeholder="*hitungan jam" required value="<?php echo $result[0]['durasi']; ?>">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="jumlahPemain" class="form-label">Jumlah Pemain</label>
                     <select class="form-select" name="jumlah_pemain" id="jumlahPemain">
-                        <option value="10">10 Orang</option>
-                        <option value="20">20 Orang</option>
-                        <option value="30">30 Orang</option>
+                        <option value="10" <?php echo ($result[0]['jumlah_pemain'] == "10") ? 'selected' : ''; ?>>10 Orang</option>
+                        <option value="20" <?php echo ($result[0]['jumlah_pemain'] == "20") ? 'selected' : ''; ?>>20 Orang</option>
+                        <option value="30" <?php echo ($result[0]['jumlah_pemain'] == "30") ? 'selected' : ''; ?>>30 Orang</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="noLapangan" class="form-label">No. Lapangan</label>
                     <select class="form-select" name="no_lapangan" id="noLapangan">
-                        <option value="1">Lapangan 1</option>
-                        <option value="2">Lapangan 2</option>
-                        <option value="3">Lapangan 3</option>
-                        <option value="4">Lapangan 4</option>
+                        <option value="1" <?php echo ($result[0]['no_lapangan'] == "1") ? 'selected' : ''; ?>>Lapangan 1</option>
+                        <option value="2" <?php echo ($result[0]['no_lapangan'] == "2") ? 'selected' : ''; ?>>Lapangan 2</option>
+                        <option value="3" <?php echo ($result[0]['no_lapangan'] == "3") ? 'selected' : ''; ?>>Lapangan 3</option>
+                        <option value="4" <?php echo ($result[0]['no_lapangan'] == "4") ? 'selected' : ''; ?>>Lapangan 4</option>
                     </select>
                 </div>
                 <div class="d-flex flex-row justify-content-center gap-3">
                     <div class="mb-3">
                         <label for="harga" class="form-label">Harga Bayar</label>
-                        <input type="number" class="form-control" id="harga" name="harga" readonly>
+                        <input type="number" class="form-control" id="harga" name="harga" readonly value="<?php echo $result[0]['harga']; ?>">
                     </div>
                     <div class="mb-3">
                         <label for="deposito" class="form-label">Deposito</label>
-                        <input type="text" class="form-control" id="deposito" name="deposito" required>
+                        <input type="text" class="form-control" id="deposito" name="deposito" required value="<?php echo $result[0]['deposito']; ?>">
                     </div>
                 </div>
                 <div class="mb-5">
                     <label for="keterangan" class="form-label">Keterangan <span class="text-secondary">*optional</span></label>
-                    <textarea class="form-control" name="keterangan" id="keterangan" cols="30" rows="3"></textarea>
+                    <textarea class="form-control" name="keterangan" id="keterangan" cols="30" rows="3"><?php echo $result[0]['keterangan']; ?></textarea>
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-outline-primary col-2">Submit</button>
+                    <button type="submit" class="btn btn-outline-primary col-2">Update</button>
                 </div>
             </form>
         </div>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkuyFutsaL</title>
+
+    <!-- Bootstrap 5 & googlefont -->
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .navbar {
+            height: 80px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #007bff;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #0056b3;
+            font-weight: bold;
+        }
+
+        .navbar-brand:hover {
+            color: #0056b3;
+            font-weight: bold;
+        }
+
+        .social-link {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover,
+        .social-link:focus {
+            background: #ddd;
+            text-decoration: none;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light shadow" data-bs-theme="light">
+            <div class="container-fluid mx-5">
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.php">SkuyFutsaL</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navigasi -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.php">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://wa.me/6282359556972">Kontak</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="about.html">Tentang Kami</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Judul Halaman -->
+    <section class="page-title-alt bg-primary position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-white font-tertiary">Tentang Kami</h2>
+                </div>
+            </div>
+        </div>
+        <!-- background shapes -->
+        <img src="img/illustrations/leaf-bg-top.png" alt="illustrations" class="bg-shape-1 w-100">
+        <img src="img/illustrations/dots-group-sm.png" alt="illustrations" class="bg-shape-2">
+        <img src="img/illustrations/leaf-yellow.png" alt="illustrations" class="bg-shape-3">
+        <img src="img/illustrations/leaf-orange.png" alt="illustrations" class="bg-shape-4">
+        <img src="img/illustrations/dots-group-cyan.png" alt="illustrations" class="bg-shape-5">
+        <img src="img/illustrations/leaf-cyan-lg.png" alt="illustrations" class="bg-shape-6">
+    </section>
+    <!-- /Judul Halaman -->
+
+    <!-- Tentang Kami -->
+    <section class="section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <p style="text-align: justify;">SkuyFutsal adalah sebuah platform penyewaan lapangan futsal yang berlokasi di Sidoarjo.
+                        SkuyFutsal dibangun oleh tim developer berpengalaman yang memiliki komitmen untuk memberikan
+                        pengalaman penyewaan lapangan futsal yang lebih mudah, aman, dan terpercaya bagi masyarakat
+                        Sidoarjo. Kami memahami betapa pentingnya kegiatan olahraga bagi kesehatan dan kualitas hidup,
+                        oleh karena itu, kami ingin memberikan kontribusi positif dengan menyediakan platform penyewaan
+                        lapangan futsal yang terintegrasi dengan sistem pembayaran dan jaminan keamanan transaksi online
+                        yang terpercaya </p>
+                    <p style="text-align: justify;">Perkenalkan saya Mohammad Rochman Liulin Nuha, umur 21 tahun. Keahlian saya di bidang Web Developer, meskipun belum sepenuhnya mahir akan tetapi semangat belajar saya sangat tinggi. Dimulai dari tahun 2020 hingga 2023 saya tetap mendalami di bidang yang sama.</p>
+                </div>
+                <div class="col-md-4 text-center drag-lg-top">
+                    <div class="shadow-down mb-4">
+                        <img src="img/myProfile.jpg" alt="author"
+                            class="img-fluid w-75 rounded-lg border-thick border-white">
+                    </div>
+                    <img src="img/signature.png" alt="signature" class="img-fluid w-50">
+                    <h4>Rochman Liulin</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Tentang Kami -->
+
+    <footer class="bg-dark footer-section py-3">
+        <div class="border-top text-center border-dark">
+            <p class="mb-0 text-light">Copyright &copy;
+                <!-- Update tahun copyright -->
+                <script>
+                    var CurrentYear = new Date().getFullYear()
+                    document.write(CurrentYear)
+                </script>
+                Developed by
+                <a class="text-white-50 text-decoration-underline" href="https://wa.me/6282359556972">Rochman Liulin</a>
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- JS Bootstrap -->
+    <script src="bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
