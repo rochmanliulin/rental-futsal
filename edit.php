@@ -76,7 +76,7 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
                             <a class="nav-link" href="https://wa.me/6282359556972">Kontak</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Tentang Kami</a>
+                            <a class="nav-link" href="about.html">Tentang Kami</a>
                         </li>
                     </ul>
                 </div>
