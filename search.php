@@ -77,7 +77,7 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
                             <a class="nav-link" href="https://wa.me/6282359556972">Kontak</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Tentang Kami</a>
+                            <a class="nav-link" href="about.html">Tentang Kami</a>
                         </li>
                     </ul>
                 </div>
@@ -103,7 +103,7 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <div class="col-3">
                     <!-- Fitur Search -->
                     <form class="input-group align-items-bottom" role="search" action="search.php" method="get">
-                        <input class="form-control" type="search" name="keyword" placeholder="Cari..." aria-label="Search">
+                        <input class="form-control" type="search" name="keyword" placeholder="Cari..." aria-label="Search" value="<?php echo $_GET['keyword'] ?>">
                         <button class="btn btn-dark" type="submit">Cari</button>
                     </form>
                 </div>
